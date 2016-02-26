@@ -1,0 +1,41 @@
+h3.newRestaurant  {
+  color: mediumblue;
+}
+
+.emphasis {
+  color: mediumblue;
+}
+
+.width100 {
+  width: 100%;
+  margin-top: 2px;
+  height: 30px;
+}
+
+button#update-description {
+  height: 30px;
+  margin-top: 4px;
+}
+
+p.margin-left-15px {
+  margin-left: 15px;
+}
+
+.panel {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border: 1px solid darkgray;
+  font-size: inherit;
+}
+
+.panel-body {
+  background-color: khaki;
+  font-size: 16px;
+  color: royalblue;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}

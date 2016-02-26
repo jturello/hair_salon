@@ -1,0 +1,38 @@
+<h3 class="newRestaurant">Restaurant Description Page:</h3>
+
+<!-- <form action='/restaurants' method="post"> -->
+  <div class="form-group">
+
+    <h5>Restaurant name:</h5>
+    <p class="margin-left-15px" id="restaurantName" name="name">$restaurant.getName()</p>
+
+    <!-- <label for="cuisineType">Cuisine Type:</label> -->
+    <h5>Cuisine type:</h5>
+    <p class="margin-left-15px" id="cuisineType" name=cuisineType>$restaurant.getCuisineType()<p>
+
+    <h5>Description:</h5>
+    <form action="/restaurants/:id/description" class="form-inline"  method="post">
+      <div class="row">
+        <div class="col-sm-11">
+          <div class="form-group width100">
+            <input name="restaurantId" id="restaurantId" type="hidden" value="$restaurant.getId()">
+            <input name="description" id="description" class="input-background-lightgray width100" type="text" value="$description">
+          </div>
+        </div>
+        <div class="col-sm-1">
+          <!-- <a href="/restaurants/$restaurant.getId()/description" class="btn btn-info" role="button">Update</a> -->
+          <button type="submit" class="btn btn-warning">Update</button>
+        </div>
+      </div>
+    </form>
+
+    </br>
+
+    <a href="/">Return to Restaurant List</a>
+
+    </br>
+
+    <form action="/restaurants/:id/delete" class="form-inline"  method="post">
+      <input name="deleteId" id="deleteId" type="hidden" value="$restaurant.getId()">
+      <button type="submit" class="btn btn-warning">Delete Restaurant</button>
+    </form>

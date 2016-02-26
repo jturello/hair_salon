@@ -1,0 +1,15 @@
+<h3>The restaurants below all have cuisine type: <span class=emphasis>$cuisine.getType()</span></h3>
+
+</hr>
+
+<ul>
+#foreach ($restaurant in $restaurants)
+  <li>
+    <a href="/restaurant/$restaurant.getId()">$restaurant.getName()</a>
+  </li>
+#end
+</ul>
+
+</br>
+
+<a href="/">Return to Restaurant List</a>
