@@ -1,13 +1,13 @@
-<h1>Restaurant List</h1>
+<h1>Stylists:</h1>
 
-<a href="/restaurants/new">Add a new restaurant</a>
+<a href="/stylists/new">Add a new stylist</a>
 
 <hr/>
 
 <ul>
-#foreach ($restaurant in $restaurants)
+#foreach ($stylist in $stylists)
   <li>
-    <a href="/restaurants/$restaurant.getId()">$restaurant.getName() : ($restaurant.getCuisineId() - $restaurant.getCuisineType() cuisine)</a>
+    <a href="/stylists/$stylist.getId()">$stylist.getName()</a>
   </li>
 #end
 </ul>

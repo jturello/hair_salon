@@ -1,0 +1,43 @@
+<h3 class="newClient">Add a new client:</h3>
+
+<form action='/clients' method="post">
+  <div class="form-group">
+    <label for="name">Client name:</label>
+    <input id="name" name="name" class="form-control" type="text" required>
+
+    <label for="stylistId">Cuisine Id:</label>
+    <input id="stylistId" name="stylistId" class="form-control" type="number" required>
+
+    <label for="description">Description (optional):</label>
+    <input id="description" name="description" class="form-control" type="text">
+  </br>
+    <button type="submit" class="btn btn-info">Add New Client</button>
+  </div>
+</form>
+
+</br>
+
+<a href="/">Return to Client List</a>
+
+<hr>
+
+<h3 class="newClient">Add a new stylist:</h3>
+
+<form action="/stylists" method="post">
+  <div class="form-group">
+    <label for="stylistType">Enter stylist type:</label>
+    <input id="stylistType" name="stylistType" class="form-control" type="text" required>
+  </br>
+    <button type="submit" class="btn btn-info">Add New Cuisine</button>
+  </div>
+</form>
+
+<p>Click on a link below to see all clients associated with the stylist type:</p>
+
+<ul>
+#foreach ($stylist in $stylists)
+  <li>
+    <a href="/stylists/$stylist.getId()">$stylist.getType(), id: $stylist.getId()</a>
+  </li>
+#end
+</ul>

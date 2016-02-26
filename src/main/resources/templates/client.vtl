@@ -1,0 +1,20 @@
+<h3 class="newClient">Client Page:</h3>
+
+  <div class="form-group">
+
+    <h5>Client name:</h5>
+    <p class="margin-left-15px" id="clientName" name="name">$client.getName()</p>
+
+    <h5>Stylist:</h5>
+    <p class="margin-left-15px" id="stylistNamr" name=stylistName>$client.getStylistName()<p>
+
+    </br>
+
+    <a href="/">Return to Stylist List</a>
+
+    </br>
+
+    <form action="/clients/:id/delete" class="form-inline"  method="post">
+      <input name="deleteId" id="deleteId" type="hidden" value="$client.getId()">
+      <button type="submit" class="btn btn-warning">Delete Client</button>
+    </form>
