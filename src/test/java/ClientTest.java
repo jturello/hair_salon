@@ -66,7 +66,7 @@ public class ClientTest {
     int originalObj_id = myClient.getId();
     myClient.update("newName", 2);
     assertEquals("newName", Client.all().get(0).getName());
-    assertEquals(2, Client.all().get(0).getId());
+    assertEquals(2, Client.all().get(0).getStylistId());
     assertEquals(originalObj_id, Client.all().get(0).getId());
   }
 

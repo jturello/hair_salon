@@ -107,6 +107,23 @@ public class App {
     }, new VelocityTemplateEngine());
 
 
+
+    get("/stylists/new", (request, reponse) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      List<Stylist> stylists = Stylist.all();
+
+      if (stylists == null) {
+        stylists = new ArrayList<Cuisine>();
+        request.session().attribute("stylists", stylists);
+      }
+
+      model.put("stylists", stylists);
+      model.put("template", "templates/stylists.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
   get("/stylists/:id", (request, response) -> {
     HashMap<String, Object> model = new HashMap<String, Object>();
 
