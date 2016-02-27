@@ -13,3 +13,18 @@
 </br>
 
 <a href="/">Return to Stylist List</a>
+
+
+<hr>
+
+<h3>Add a client:</h3>
+
+<form action="/clients" method="post">
+  <div class="form-group">
+    <label for="clientName">Enter client name:</label>
+    <input id="clientName" name="clientName" class="form-control" type="text" required>
+    <input type="hidden" name="stylistId" value=$stylist.getId()>
+  </br>
+    <button type="submit" class="btn btn-info">Add Client</button>
+  </div>
+</form>

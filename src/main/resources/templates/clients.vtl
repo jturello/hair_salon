@@ -4,12 +4,8 @@
   <div class="form-group">
     <label for="name">Client name:</label>
     <input id="name" name="name" class="form-control" type="text" required>
+    <input id="stylistId" name="stylistId" type="hidden" value="$client.getStylistId()">
 
-    <label for="stylistId">Cuisine Id:</label>
-    <input id="stylistId" name="stylistId" class="form-control" type="number" required>
-
-    <label for="description">Description (optional):</label>
-    <input id="description" name="description" class="form-control" type="text">
   </br>
     <button type="submit" class="btn btn-info">Add New Client</button>
   </div>
@@ -25,7 +21,7 @@
 
 <form action="/stylists" method="post">
   <div class="form-group">
-    <label for="stylistType">Enter stylist type:</label>
+    <label for="stylistType">Enter stylist:</label>
     <input id="stylistType" name="stylistType" class="form-control" type="text" required>
   </br>
     <button type="submit" class="btn btn-info">Add New Cuisine</button>
