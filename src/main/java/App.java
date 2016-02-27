@@ -102,7 +102,7 @@ public class App {
       request.session().attribute("stylists", stylists);
 
       model.put("stylists", stylists);
-      model.put("template", "templates/clients-stylists.vtl");
+      model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -114,7 +114,7 @@ public class App {
       List<Stylist> stylists = Stylist.all();
 
       if (stylists == null) {
-        stylists = new ArrayList<Cuisine>();
+        stylists = new ArrayList<Stylist>();
         request.session().attribute("stylists", stylists);
       }
 
