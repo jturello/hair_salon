@@ -35,46 +35,57 @@ public class AppTest extends FluentTest {
       click("a", withText("Add a new stylist"));
       assertThat(pageSource()).contains("Add a stylist name");
     }
-    //
-    // @Test
-    // public void multipleWordsAreDisplayed_Test() {
-    //   goTo("http://localhost:4567/words/new");
-    //   fill("#word").with("firstWord");
-    //   submit(".btn");
-    //   goTo("http://localhost:4567/words/new");
-    //   fill("#word").with("secondWord");
-    //   submit(".btn");
-    //   assertThat(pageSource()).contains("firstWord");
-    //   assertThat(pageSource()).contains("secondWord");
-    //   }
-    //
-    // @Test
-    // public void definitionIsDisplayed_Test() {
-    //   goTo("http://localhost:4567/words/new");
-    //   fill("#word").with("firstWord");
-    //   submit(".btn");
-    //   click("a", withText("firstWord"));
-    //   click("a", withText("Add a definition"));
-    //   fill("#definition").with("firstDefinition");
-    //   submit(".btn");
-    //   assertThat(pageSource()).contains("firstDefinition");
-    //   }
-    //
-    // @Test
-    // public void multipleDefinitionsAreDisplayed_Test() {
-    //   goTo("http://localhost:4567/words/new");
-    //   fill("#word").with("firstWord");
-    //   submit(".btn");
-    //   click("a", withText("firstWord"));
-    //   click("a", withText("Add a definition"));
-    //   fill("#definition").with("firstDefinition");
-    //   submit(".btn");
-    //   click("a", withText("Add a definition"));
-    //   fill("#definition").with("secondDefinition");
-    //   submit(".btn");
-    //   assertThat(pageSource()).contains("firstDefinition");
-    //   assertThat(pageSource()).contains("secondDefinition");
-    //   }
-    // }
+
+    @Test
+    public void click_returnToStylistList_displaysStylistListPage_true() {
+      goTo("http://localhost:4567/");
+      click("a", withText("Add a new stylist"));
+      click("a", withText("Return to stylist list"));
+      assertThat(pageSource()).contains("Add a new stylist");
+    }
+
+    @Test
+    public void stylistPageDisplaysTextStylistsClientList_true() {
+      goTo("http://localhost:4567/");
+      click("a", withText("seedStylist"));
+      assertThat(find("h3").getTexts().contains("seedStylist's client list"));
+    }
+
+    @Test
+    public void stylistPage_addClient_addsClientToStylistList_true() {
+      goTo("http://localhost:4567/stylists/1");
+      fill("#clientName").with("newClient");
+      submit(".btn");
+      assertThat(pageSource()).contains("newClient");
+    }
+
+    @Test
+    public void clientPage_containsTextClientPage_true() {
+      goTo("http://localhost:4567/stylists/1");
+      fill("#clientName").with("newClient");
+      submit(".btn");
+      click("a", withText("newClient"));
+      assertThat(pageSource()).contains("Client Page");
+    }
+
+    @Test
+    public void deleteClient_removesClientFromStylistPage_true() {
+      goTo("http://localhost:4567/stylists/1");
+      fill("#clientName").with("newClient");
+      submit(".btn");
+      click("a", withText("newClient"));
+      submit(".btn");
+      assertThat(pageSource()).doesNotContain("newClient");
+    }
+
+    @Test
+    public void clientPage_clickReturnToStylistListDisplaysStylistList_true() {
+      goTo("http://localhost:4567/stylists/1");
+      fill("#clientName").with("newClient");
+      submit(".btn");
+      click("a", withText("newClient"));
+      click("a", withText("Return to Stylist List"));
+      assertThat(pageSource()).contains("Add a new stylist");
+    }
 
 }
