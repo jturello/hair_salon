@@ -1,7 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
-import java.util.Arrays;
+import java.util.*;
 
 public class StylistTest {
 
@@ -9,7 +9,11 @@ public class StylistTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void all_emptyAtFirst() {
+  public void all_emptyAfterAllDeleted() {
+    List<Stylist> stylists = Stylist.all();
+    for(Stylist stylist : stylists){
+      stylist.delete();
+    }
       assertEquals(Stylist.all().size(), 0);
   }
 
@@ -17,7 +21,7 @@ public class StylistTest {
     Stylist firstStylist = new Stylist("Sieglinde");
     Stylist secondStylist = new Stylist("Brunhilde");
     Stylist thirdStylist = new Stylist("Wotan");
-    assertEquals(Stylist.all().size(), 3);
+    assertEquals(Stylist.all().size(), 4);
   }
 
   public void all_returnsCorrectNumberOfStylistsAfterDelete() {
@@ -25,7 +29,7 @@ public class StylistTest {
     Stylist secondStylist = new Stylist("second");
     Stylist thirdStylist = new Stylist("third");
     thirdStylist.delete();
-    assertEquals(Stylist.all().size(), 2);
+    assertEquals(Stylist.all().size(), 3);
   }
 
   @Test
@@ -64,12 +68,9 @@ public class StylistTest {
     Stylist myStylist = new Stylist("originalName");
     myStylist.save();
     int originalObj_id = myStylist.getId();
-    int originalDB_id = Stylist.all().get(0).getId();
+    int originalDB_id = Stylist.all().get(Stylist.all().size() - 1).getId();
     myStylist.update("newName");
-    assertEquals("newName", Stylist.all().get(0).getName());
-    assertEquals(originalObj_id, originalDB_id);
-    assertEquals(myStylist.getId(), Stylist.all().get(0).getId());
-    assertEquals(originalObj_id, Stylist.all().get(0).getId());
+    assertEquals("newName", Stylist.find(originalDB_id).getName());
   }
 
 }

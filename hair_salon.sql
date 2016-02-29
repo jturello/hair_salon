@@ -119,14 +119,11 @@ ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq':
 --
 
 COPY clients (id, name, stylist_id) FROM stdin;
-1	Tom client	1
-2	Janet client	1
-3	Frank client	2
-4	Shirley client	2
-5	Jake  client	3
-6	Sam client	3
-7	Karen client	3
-8	Aida client	4
+28	Fred Client	1
+29	Jane Client	2
+30	Shane Client	3
+31	Wilma Client	1
+32	Bambam Client	1
 \.
 
 
@@ -134,7 +131,7 @@ COPY clients (id, name, stylist_id) FROM stdin;
 -- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: jturello
 --
 
-SELECT pg_catalog.setval('clients_id_seq', 8, true);
+SELECT pg_catalog.setval('clients_id_seq', 32, true);
 
 
 --
@@ -142,10 +139,10 @@ SELECT pg_catalog.setval('clients_id_seq', 8, true);
 --
 
 COPY stylists (id, name) FROM stdin;
-1	John
-2	Jane
-3	Becky
-4	Tim
+1	John Stylist
+2	Jane Stylist
+3	Becky Stylist
+4	Tim Stylist
 \.
 
 
@@ -153,7 +150,7 @@ COPY stylists (id, name) FROM stdin;
 -- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: jturello
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 4, true);
+SELECT pg_catalog.setval('stylists_id_seq', 11, true);
 
 
 --
@@ -170,6 +167,14 @@ ALTER TABLE ONLY clients
 
 ALTER TABLE ONLY stylists
     ADD CONSTRAINT stylists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: stylist_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: jturello
+--
+
+ALTER TABLE ONLY clients
+    ADD CONSTRAINT stylist_id_fkey FOREIGN KEY (stylist_id) REFERENCES stylists(id);
 
 
 --
