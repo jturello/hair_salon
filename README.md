@@ -1,41 +1,72 @@
-# Best Restaurants
+# Hair Salon
 
-##### Epicodus exercise using Java and Postgres, 01.21.2016
+##### Epicodus exercise Database Basics code review, 02.29.2016
 
-##### Author Names
+##### James Turello
 
 ## Description
-Add a description here
+This is an app for a hair salon. The owner can add a list of the stylists, and for each stylist, add clients who see that stylist. The stylists work independently, so each client only belongs to a single stylist.
 
 ## Setup
 
 Clone this repository:
+
 ```
 $ cd ~/Desktop
-$ git clone https://github.com/LINK_TO_YOUR_REPO
-$ cd best-restaurants
+$ git clone https://github.com/jturello/hair_salon.git
+$ cd hair_salon
 ```
 
 Open terminal and run Postgres:
+
 ```
 $ postgres
 ```
 
-Open a new tab in terminal and create the `best-restaurants` database:
+open file 'hair_salon.sql' in the root directory and change any statements 'owner=jturello' to owner=<your psql owner id>
+
+Then in another terminal window enter the following commands:
+* cd into the root directory (cd ~/Desktop/hair_salon)
+* psql
+* CREATE DATABASE hair_salon;
+* hair_salon < hair_salon.sql;
+  (you should see a bunch of sql DML commands printed to the terminal window)
+* once the database is imported you can connect to it to run sql commands from the terminal by entering: psql
+* \c hair_salon;
+
+Then enter the following commands if you want to run the unit and integration tests against the project:
+* CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
+
+To manually create the databases, enter the following commands in the terminal window from the project's root directory:
+
 ```
-$ psql
-$ CREATE DATABASE best_restaurants;
-$ psql best_restaurants < best_restaurants.sql
+psql
+$ CREATE DATABASE hair_salon;
+$ \c hair_salon;
+$ CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR);
+$ CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR, stylist_id REFERNECES stylists(id));
+$ CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
 ```
 
+
+
 Navigate back to the directory where this repository has been cloned and run gradle:
+
+To run and access the site enter these commands in a terminal window from the project root directory:
+
 ```
 $ gradle run
 ```
 
+Then in your browser enter url:
+
+```
+localhost:4567
+```
+
 ## Legal
 
-Copyright (c) 2015 Author names go here
+Copyright (c) 2016, James Turello
 
 This software is licensed under the MIT license.
 
